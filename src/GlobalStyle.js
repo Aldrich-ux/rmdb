@@ -3,7 +3,8 @@ import { createGlobalStyle } from "styled-components";
 // `--` is CSS variable
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --maxWidth: 1280px; 
+    --maxWidth: 1280px;
+    --black: #000;
     --white: #fff;
     --lightGrey: #eee;
     --medGrey: #353535;
