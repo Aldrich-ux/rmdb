@@ -43,7 +43,7 @@ export const useHomeFetch = () => {
     if (!searchTerm) {
       const sessionState = isPersistedState("homeState");
 
-      if (sessionState) {
+      if (sessionState && sessionState.results && sessionState.results.length) {
         setState(sessionState);
         return;
       }
@@ -63,7 +63,9 @@ export const useHomeFetch = () => {
 
   // Write to sessionStorage
   useEffect(() => {
-    if (!searchTerm) sessionStorage.setItem("homeState", JSON.stringify(state));
+    if (!searchTerm && state.results.length) {
+      sessionStorage.setItem("homeState", JSON.stringify(state));
+    }
   }, [searchTerm, state]);
 
   return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
